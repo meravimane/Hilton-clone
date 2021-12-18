@@ -127,7 +127,7 @@
         .connectingRoom{
             margin:auto;
             text-align:center;
-            width:100%;
+            /* width:100%; */
             padding: 1%;
             background-color:#FDEDA9;
             font-weight: 700;
@@ -136,7 +136,7 @@
         .inputDate{
             margin:auto;
             text-align:center;
-            width:100%;
+            /* width:100%; */
             padding: 1%;
             display: flex;
             margin-left: 30%;
@@ -246,6 +246,7 @@
             height:3px;
             background-color: #104C97;
             width: 100%;
+            margin-bottom: 5%;
         }
         .selectedHotel{
             padding: 5%;
@@ -311,10 +312,15 @@
         .cancellationPolicy p{
             margin: auto;
         }
-        .pay{
+        .pay {
             margin-left: 0 !important;
             color: #fff !important;
+    
         }
+
+        #hiltonIcon{
+        cursor: pointer;
+       }
     </style>
 </head>
 <body>
@@ -322,7 +328,7 @@
 <div class="navMain">
     <div class="navbar">
         <div class="hiltonIcon">
-            <img src="/icons/hiltonIcon.svg" alt="Hilton">
+            <img id="hiltonIcon" onclick="goHome()" src="/icons/hiltonIcon.svg" alt="Hilton">
         </div>
 
         <div class="navLinks">
@@ -393,10 +399,11 @@
                 <p></p>
 
             </div>
-           
+            
         </div>
         <div class="shortHrLine"></div>
 
+        <a class="webBtn pay" href="/hotels/">Back to Home</a>
     </div>
 </div>
 <!-- FOOTER -->
@@ -450,3 +457,10 @@
 </div>
 </body>
 </html>
+
+<script>
+    
+function goHome(){
+    window.location.href = "/hotels/";
+}
+</script>

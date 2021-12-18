@@ -435,10 +435,13 @@
            height: 40px;
        }
        .searchMargin{
-           margin-top:16.8%;
+           margin-top:11.9%;
        }
        .searchValue ::-webkit-input-placeholder {
         font-weight: bold ;
+       }
+       #hiltonIcon{
+        cursor: pointer;
        }
        /* .datepicker::-webkit-datetime-edit {  font-family: Proxima Nova,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
            padding: 1em; 
@@ -459,7 +462,7 @@
         <div class="navMain">
             <div class="navbar">
                 <div class="hiltonIcon">
-                    <img src="/icons/hiltonIcon.svg" alt="Hilton">
+                    <img id="hiltonIcon" onclick="goHome()" src="/icons/hiltonIcon.svg" alt="Hilton">
                 </div>
     
                 <div class="navLinks">
@@ -918,4 +921,10 @@ function showDivs(n) {
   y[slideIndex-1].style.display = "block";  
   
 }
+
+function goHome(){
+    window.location.href = "/hotels/";
+}
+
+
 </script>

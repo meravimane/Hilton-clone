@@ -127,7 +127,7 @@
         .connectingRoom{
             margin:auto;
             text-align:center;
-            width:100%;
+            /* width:100%; */
             padding: 1%;
             background-color:#FDEDA9;
             font-weight: 700;
@@ -136,7 +136,7 @@
         .inputDate{
             margin:auto;
             text-align:center;
-            width:100%;
+            /* width:100%; */
             padding: 1%;
             display: flex;
             margin-left: 30%;
@@ -315,6 +315,9 @@
             margin-left: 0 !important;
             color: #fff !important;
         }
+        #hiltonIcon{
+        cursor: pointer;
+       }
     </style>
 </head>
 <body>
@@ -322,7 +325,7 @@
 <div class="navMain">
     <div class="navbar">
         <div class="hiltonIcon">
-            <img src="/icons/hiltonIcon.svg" alt="Hilton">
+            <img id="hiltonIcon" onclick="goHome()" src="/icons/hiltonIcon.svg" alt="Hilton">
         </div>
 
         <div class="navLinks">
@@ -548,3 +551,10 @@
 </div>
 </body>
 </html>
+
+<script>
+    
+function goHome(){
+    window.location.href = "/hotels/";
+}
+</script>
