@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <title>Hotels</title>
+    <style>
+        *{
+            font-family: Proxima Nova,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+            margin: 0;
+            border: 0;
+        }
+        .navMain{
+            height: 70px;
+            position: fixed;
+            width:100%;
+            z-index: 9999;
+        }
+        .navbar {
+            position: fixed;
+            display: flex;
+            width:100%;
+            padding: 0.5% 2.6% 0.4%;
+            background:white;
+        }
+        .hiltonIcon{
+            flex-wrap: wrap;
+        }
+        .navLinks{
+            flex-grow: 6;
+            padding: 12px 16px;
+        }
+        .navLinks a{
+            margin-right: 1.5%;
+            text-decoration: none;
+            color: #121212;
+            font-weight: 700;
+            
+        }
+        .join{
+            flex-grow: 1;
+            display: flex;
+            padding: 12px 16px;
+        }
+        .join a{
+            text-decoration: none;
+            color: #121212;
+        }
+        .line{
+            width: 0.5%;
+            height: 90%;
+            background-color: rgb(227, 227, 227);
+            margin-left: 8%;
+            margin-right:8%;
+        }
+        #circularBox{
+           width: 18px;
+           height: 18px;
+           margin-left: 3%;
+        }
+        .borderBottom{
+            margin-top: 68px;
+            width: 100%;
+            height: 0.6px;
+            background-color: rgb(227, 227, 227);
+        }
+
+
+        /* Join add */
+        .joinAdd{
+            display: flex;
+            background-color: #009CDE;
+            color: #fff;
+            padding: 0.6% 14%;
+        }
+        .joinAdd a{
+            color: #fff;
+        }
+        .joinAdd h2{
+            font-weight: 700;
+            margin-left: 2%;
+            margin-top:14px;
+        }
+        .joinAdd h3{
+            margin-left: 0.5%;
+            margin-top:18px;
+        }
+
+
+        /* marketing */
+
+        
+        .markting{
+            width: 88%;
+            margin: auto;
+        }
+        
+        .slide{
+            display:none;
+            margin-top: 2%;
+            width: 100%;
+        }
+        .slideImgInfo{
+            margin:auto;
+            text-align: center;
+            display:none;
+            width:80%
+        }
+        .slideInfo{
+            margin: auto;
+            text-align: center;
+        }
+        .slideInfo h2{
+           margin-top: 1.2%;
+           font-size: 36px;
+           color: #104C97;
+           font-weight: 800; 
+        }
+        .slideInfo p{
+           font-size: 20px;
+           color: #121212; 
+           margin-bottom: 2%;
+           margin-top: 1.2%;
+        }
+        .slideBtn{
+           position: absolute;
+           top: 80%;
+           height: 54px;
+           width: 34px;
+           font-size: 30px;
+           color: #fff;
+           background-color:#121212;
+           cursor: pointer;
+        }
+        
+        .right{
+            left: 91.76%;
+        }
+        .webBtn {
+           font-size: 20px;
+           background-color: #104C97;
+           color: #fff;
+           padding:9px 32px;
+           border-radius: 5px;
+           text-decoration: none;
+        }
+        /* marketing */
+        .offerTitle{
+            margin: auto;
+            width:90%
+        }
+        
+
+        .offerTitle h2{
+           margin-top: 1.2%;
+           font-size: 36px;
+           color: #104C97; 
+
+        }
+        .offerTitle p{
+           font-size: 20px;
+           color: #121212; 
+           margin-bottom: 2%;
+           margin-top: 1.2%;
+        }
+
+        .allOffer{
+            position: relative;
+            display: grid;
+            padding: 2%;
+            grid-template-columns: 31.9% 31.9% 31.9%;
+            grid-gap: 1.8%;
+            width: 90%;
+            margin: auto;
+            
+        }
+        
+        .offerDetail img{
+            width: 100%;
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0, 0.4);
+            filter: brightness(60%);
+        }
+       
+        .offerDetail h3{
+            color: #fff;
+            font-weight: bold;
+            font-size: 24px;
+            text-shadow: 2px 2px rgb(0,0,0);
+        }
+        .blurText .upperOffer{
+            position: absolute;
+            width:30.5%;
+            text-align: center;
+            transition-duration: 0.2s;
+            top: 44.2%;
+            transition: all .4s ease-in-out;
+        }
+        
+        .blurText .lowerOffer{
+            position: absolute;
+            width:30.5%;
+            text-align: center;
+            transition-duration: 0.2s;
+            top: 91.2%;
+            transition: all .4s ease-in-out;
+        }
+        .offerDetail:hover .lowerOffer{
+            top: 70%;
+        }
+
+        .offerDetail:hover .upperOffer{
+            top: 25%;
+        }
+
+
+        /* Hilton Honor Benfits */
+        .hiltonBenfit{
+            width: 88%;
+            margin: auto;
+        }
+        .benfitTitle{
+            margin: auto;
+            width: 75%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .benfitLine{
+            height:40px;
+            width: 0.5px;
+            background-color:#104C97;
+        }
+        .benfitTitle a{
+          text-decoration: none;
+          line-height:30px;
+        }
+        .active{
+            border-bottom: 2px solid #104C97;
+            /* border-bottom-style: ; */
+            border-bottom-width: 7px;
+            padding-bottom:15px ;
+        }
+        .benfitDis{
+            display: grid;
+            grid-template-columns: 63% 34%;
+        }
+        .benfitDis img{
+            width:95%;
+        }
+        .benfitInfo{
+            margin-left: 2%;
+            margin-top: 14%;
+        }
+        .benfitInfo h2{
+           margin-top: 1.2%;
+           font-size: 36px;
+           color: #104C97;
+           font-weight: 800; 
+        }
+        .benfitInfo p{
+           font-size: 20px;
+           color: #121212; 
+           margin-bottom: 7%;
+           margin-top: 3%;
+        }
+       
+       .worldOffer{
+            position: relative;
+            display: grid;
+            padding: 2%;
+            grid-template-columns: 23.9% 23.9% 23.9% 23.9%;
+            grid-gap: 1.8%;
+            width: 90%;
+            margin: auto;
+       }
+
+       .worldOfferDetail img{
+            width: 100%;
+            height: 443px;
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0, 0.4);
+            filter: brightness(60%);
+        }
+       
+        .worldOfferDetail h3{
+            color: #fff;
+            font-weight: bold;
+            font-size: 24px;
+            text-shadow: 2px 2px rgb(0,0,0);
+        }
+        .worldBlurText .upperOffer{
+            position: absolute;
+            width:22.5%;
+            text-align: center;
+            transition-duration: 0.2s;
+            top: 74%;
+            transition: all .4s ease-in-out;
+        }
+        
+        .worldOfferDetail:hover .upperOffer{
+            top: 44.2%;
+        }
+
+
+        /* footer */
+        .footer{
+            display: grid;
+            grid-template-columns: 65% 35%;
+            width: 90%;
+            margin: auto;
+            margin-top:2%;
+            margin-bottom:3%
+        }
+        
+        .contactDetails h3{
+           color: #121212;
+        }
+        .contactDetails h2{
+           margin-top:2%;
+           color: #104C97;
+        }
+        .contactDetails p{
+           color: #666666;
+        }
+        .socialIcons{
+            display: flex;
+           margin-top: 3%;
+        }
+        .socialIcons img{
+           height: 32px;
+           width: 32px;
+           margin-right: 2%;
+        }
+        .usefulLinks{
+            display: grid;
+            grid-template-columns: 40% 60%;
+        }
+        .usefulLinks a{
+            display: block;
+            font-size: .800rem;
+            line-height: 2.5rem;
+        }
+        .usefulLinks a{
+            color: #104C97
+        }
+        .hrFooter{
+            margin-top:2%;
+        }
+        /* footer */
+
+        /* SLIDER */
+
+        .slliderMain{
+            padding-top: 2%;
+            background-color:#E3E3E3;
+            width: 100%;
+            padding-bottom: 4%;
+        }
+        .sliderSub{
+            width: 88%;
+            margin: auto;
+        }
+        .sliderimg{
+            display: flex;
+            overflow:auto;
+        }
+
+        .brandDetail {
+           background-color:white !important;
+            width: 88%;
+            padding:2%;
+            margin-top: 2%;
+            margin: auto;
+        }
+        .brandDetail h3{
+            font-size:26px;
+        }
+        .brandDetail p{
+            margin-top: 1%;
+            padding-bottom: 2%;
+        }
+        .brandDetailBtn{
+            margin-top:4%;
+            margin-left: 41.7%;
+        }
+        /* SLIDER */
+
+        /* SEARCH */
+
+        form{  
+           padding-top:90px;
+           display: grid;
+           grid-template-columns: 36% 12% 12% 11% 11% 14% ;
+           width: 88%;
+           margin:auto;
+           height :130px;
+       }
+       .splWidth{
+           margin-top: 21%;
+           width:100%;
+       }
+       .datepicker{
+           margin-top:20.9%;
+           width: 120px;
+       }
+       .splBtn{
+           background-color:white ;
+           border: 0.3px solid black;
+           color:black;
+           border-radius:5px;
+           font-size: 16px;
+           font-weight: bold ;
+           text-decoration: none;
+           padding: 0.5em 0.5em 0.5em;
+           width:60px;
+       }
+       .splSearchBtn{
+       
+           font-size: 16px;
+           font-weight: bold ;
+           padding: 0.5em 0.5em 0.5em;
+           background-color:#104C97;
+           color:white;
+           text-decoration: none;
+           border-radius: 5px;
+       }
+       .searchValue{
+           margin-top: 0.9%;
+           border:0.6px solid rgb(167, 145, 145) !important;
+           width: 97%;
+           height: 40px;
+       }
+       .searchMargin{
+           margin-top:16.8%;
+       }
+       .searchValue ::-webkit-input-placeholder {
+        font-weight: bold ;
+       }
+       /* .datepicker::-webkit-datetime-edit {  font-family: Proxima Nova,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+           padding: 1em; 
+        height: 50px;}
+       .datepicker::-webkit-datetime-edit-fields-wrapper { background: silver; }
+       .datepicker::-webkit-datetime-edit-text { color: red; padding: 1%;  height: 50px;}
+       .datepicker ::-webkit-datetime-edit-month-field { color: blue; height: 50px; }
+       .datepicker::-webkit-datetime-edit-day-field { color: green; height: 50px; }
+       .datepicker::-webkit-datetime-edit-year-field { color: purple; height: 50px; }
+       .datepicker::-webkit-inner-spin-button { display: none; }
+       .datepicker::-webkit-calendar-picker-indicator { height: 50px;background: orange; } */
+         /* SEARCH */
+    </style>
+</head>
+<body>
+    
+    <div>
+        <div class="navMain">
+            <div class="navbar">
+                <div class="hiltonIcon">
+                    <img src="/icons/hiltonIcon.svg" alt="Hilton">
+                </div>
+    
+                <div class="navLinks">
+                    <a href="#">Locations</a>
+                    <a href="#">Offers</a>
+                    <a href="#">Mettings & Events</a>
+                    <a href="#">Credit Cards</a>
+                </div>
+    
+                <div class="join">
+                    <a href="#">Join</a>
+                    <div class="line"></div>
+                    <a href="#">Sign In</a>
+                    <div id="circularBox">
+                        <img src="/icons/user.svg" alt="">
+                    </div>
+                    
+                </div>
+            </div>
+            <hr class="borderBottom">
+        </div>
+       
+       <!--  Search Engine -->
+        <div class="searchMain">
+            <form action="/hotels/search" method="get">
+
+                <div>
+                    <p>Where to?</p>
+                    <input class="searchValue"" type="text" name="city" placeholder="City, state, location or airport">
+                </div>
+    
+                <div>
+                    <input class="datepicker startDate" name="startDate" type="date" placeholder="from">
+                </div>
+    
+                <div>
+                    <input class="datepicker startDate" name="endDate" type="date" placeholder="to">
+                </div>
+    
+                <div  class="splWidth">
+                    <a class="splBtn" href="#">1 Room, 1 Guest</a>
+                </div>
+    
+                <div  class="splWidth">
+                    <a class="splBtn" href="#">Special Rates</a>
+                </div>
+    
+                 <div  class="splWidth searchMargin">
+                    <input class="splSearchBtn" type="submit" Value="Find a Hotel">
+                    <!-- <a class="splSearchBtn" href="#">Find a Hotel</a> -->
+                </div>
+
+
+            </form>
+            
+        </div>
+
+
+        <div class="joinAdd">
+            <div class="honorLogo">
+                <img src="/images/honorsLogo.webp" alt="">
+            </div>
+            
+            <h2>Join Hilton Honors and get 5,000 Bonus Points on your next two stays.</h2>
+           <h3><a href="#">Join for Free</a></h3>
+        </div>
+
+        <!-- markting -->
+
+        <div class="markting">
+
+            <div class="slideShow">
+                <img class="slide" src="/images/whereTo.webp" alt="where">
+                <img class="slide" src="/images/stayTo.webp" alt="stay">
+                <button class="slideBtn left" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="slideBtn right" onclick="plusDivs(1)">&#10095;</button>
+            </div>
+            <div class="slideInfo">
+                <div class="slideImgInfo">
+                    <h2>Where to in '22?</h2>
+                    <p>Close to home or around the world, we’ll help you make new memories wherever the new year takes you.</p>
+                    <a class="webBtn" href="#">Let's Go</a>
+                </div>
+                <div class="slideImgInfo">
+                    <h2>Stay Together This Holiday Season</h2>
+                    <p>Have a happy holi-stay with Confirmed Connecting Rooms by Hilton. Now you can book and instantly confirm connecting rooms on Hilton.com or the Hilton Honors app. With Hilton, you’ll have peace of mind knowing everyone in your group will stay together.</p>
+                    <a class="webBtn" href="#">Learn More</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="newOffers">
+            <div class="offerTitle">
+                <h2>Check Out What’s New</h2>
+                <p>Make your upcoming travel memorable with exciting experiences and offers from Hilton.</p>
+            
+            </div>
+            <div class="allOffer">
+                <div class="offerDetail">
+                    <img src="/images/offerImg1.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="upperOffer one">What To Expect During Your Stay</h3>
+                    </div>
+                    
+                </div>
+
+                <div class="offerDetail">
+                    <img src="/images/offerImg2.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="upperOffer two">Multiply Your Points</h3>
+                    </div>
+                   
+                </div>
+
+                <div class="offerDetail">
+                    <img src="/images/offerImg3.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="upperOffer three">Earn up to 130K Points</h3>
+                    </div>
+                    
+                </div>
+
+
+                <div class="offerDetail">
+                    <img src="/images/offerImg4.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="lowerOffer four">See Where Your Points Can Take You</h3>
+                    </div>
+                    
+                </div>
+
+
+                <div class="offerDetail">
+                    <img src="/images/offerImg5.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="lowerOffer five">A Night On Us</h3>
+                    </div>
+                    
+                </div>
+
+
+                <div class="offerDetail">
+                    <img src="/images/offerImg6.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="lowerOffer six">Earn Up to 3X Points on Every Stay</h3>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div class="newOffers">
+            <div class="offerTitle">
+                <h2>Make Your Wish List Your To-Do List</h2>
+                <p>Wherever the new year takes you, Hilton is ready to help you discover all the fun things to do.</p>
+            
+            </div>
+            <div class="allOffer">
+                <div class="offerDetail">
+                    <img src="/images/wishImg1.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="upperOffer one">Beach Vacations</h3>
+                    </div>
+                    
+                </div>
+
+                <div class="offerDetail">
+                    <img src="/images/wishImg2.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="upperOffer two">Dallas</h3>
+                    </div>
+                   
+                </div>
+
+                <div class="offerDetail">
+                    <img src="/images/wishImg3.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="upperOffer three">Pet-Friendly Stays</h3>
+                    </div>
+                    
+                </div>
+
+
+                <div class="offerDetail">
+                    <img src="/images/wishImg4.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="lowerOffer four">New York City</h3>
+                    </div>
+                    
+                </div>
+
+
+                <div class="offerDetail">
+                    <img src="/images/wishImg5.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="lowerOffer five">Resort Getaways</h3>
+                    </div>
+                    
+                </div>
+
+
+                <div class="offerDetail">
+                    <img src="/images/wishImg6.webp" alt="img">
+                    <div class="blurText">
+                        <h3 class="lowerOffer six">Orlando</h3>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <div class="hiltonBenfit">
+                <div class="benfitTitle">
+                    <a href="#" class="active"><h2>Join Hilton Honors</h2></a>
+                    <div class="line benfitLine"></div>
+                    <a href="#"><h2>Contactless Arrival</h2></a>
+                    <div class="line benfitLine"></div>
+                    <a href="#"><h2>2022 Benefits Update</h2></a>
+                </div>
+                <div class="benfitDis">
+                    <div>
+                        <img src="/images/benfitImg1.webp" alt="img">
+                    </div>
+                    <div class="benfitInfo">
+                        <h2>Enhance the Way You Stay</h2>
+                        <p>Hilton Honors members get more value from stays with exclusive member rates, lowest price guarantee, and free WiFi. You'll also enjoy more flexibility and control with Contactless Arrival with our Hilton Honors app. Plus, earn Points on every stay that you can use toward free nights or redeem them with our exclusive partners.
+                            Join for Free</p>
+                        <a class="webBtn" href="#">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!-- Memories around world -->
+
+
+<div class="newOffers">
+    <div class="offerTitle">
+        <h2>Create New Memories Around the World</h2>
+        <p>Explore some of our newest hotels ready to welcome you for an incredible stay.</p>
+    
+    </div>
+    <div class="worldOffer">
+        <div class="worldOfferDetail">
+            <img src="/images/worldImg1.webp" alt="img">
+            <div class="worldBlurText">
+                <h3 class="upperOffer one">Signia by Hilton Orlando Bonnet Creek</h3>
+            </div>
+            
+        </div>
+
+        <div class="worldOfferDetail">
+            <img src="/images/worldImg2.webp" alt="img">
+            <div class="worldBlurText">
+                <h3 class="upperOffer two">Hilton Cancun, an All-Inclusive Resort</h3>
+            </div>
+           
+        </div>
+
+        <div class="worldOfferDetail">
+            <img src="/images/worldImg3.webp" alt="img">
+            <div class="worldBlurText">
+                <h3 class="upperOffer three">Hotel 1000, LXR Hotels & Resorts</h3>
+            </div>
+            
+        </div>
+
+
+        <div class="worldOfferDetail">
+            <img src="/images/worldImg4.webp" alt="img">
+            <div class="worldBlurText">
+                <h3 class="upperOffer four">Waldorf Astoria Monarch Beach</h3>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+
+<!-- sllider -->
+
+<div class="slliderMain">
+     <div class="offerTitle">
+            <h2>Our Brands</h2>
+
+        </div>
+    <div class="sliderSub">
+       
+        <div class="sliderimg">
+            <div>
+                <img src="/icons/WA.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/OL.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/CH.svg" alt="">
+            </div>
+
+
+            <div>
+                <img src="/icons/PY.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/SA.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/HI.svg" alt="">
+            </div>
+
+
+            <div>
+                <img src="/icons/QQ.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/DT.svg" alt="">
+            </div>
+
+
+            <div>
+                <img src="/icons/UP.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/ES.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/PO.svg" alt="">
+            </div>
+
+
+            <div>
+                <img src="/icons/UA.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/GI.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/HP.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/RU.svg" alt="">
+            </div>
+
+
+            <div>
+                <img src="/icons/HW.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/HT.svg" alt="">
+            </div>
+
+            <div>
+                <img src="/icons/GV.svg" alt="">
+            </div>
+
+        </div>
+    </div>
+    <div  class="brandDetail">
+        <h3>Waldorf Astoria</h3>
+        <p>   Offers unforgettable experiences at iconic destinations around the world.</p>
+    </div>
+    <div class="brandDetailBtn">
+        <a class="webBtn" href="#">Visit Waldorf Astoria</a>
+    </div>
+  
+</div>
+
+
+<hr class="borderBottom hrFooter">
+<!-- footer -->
+    <div class="footer">
+        <div class="contactDetails">
+            <h3>How can we help?</h3>
+            <h2>1-800-HILTONS</h2>
+            <p>Call us, it's toll-free.</p>
+            <div class="socialIcons">
+                <img src="/icons/Facebook.svg" alt="Facebook">
+                <img src="/icons/Twitter.svg" alt="Twitter">
+                <img src="/icons/Instagram.svg" alt="Instagram">
+            </div>
+            
+        </div>
+        <div class="usefulLinks">
+            <div>
+                <a href="#">Travel Inspiration</a>
+                <a href="#">Pet-Friendly Stays</a>
+                <a href="#">Hilton Gift Card</a>
+                <a href="#">Global Privacy Statement</a>
+                <a href="#">Site Map</a>
+                <a href="#">Careers</a>
+                <a href="#">Development</a>
+                <a href="#">Media</a>
+                <a href="#">Web Accessibility</a>
+            </div>
+            <div>
+                <a href="#">Customer Support</a>
+                <a href="#">Cookies Statement</a>
+                <a href="#">Site Usage Agreement</a>
+                <a href="#">Personal Data Requests</a>
+                <a href="#">Do Not Sell My Personal Information</a>
+                <a href="#">Modern Slavery and Human Trafficking</a>
+                <a href="#">Hilton Honors Discount Terms & Conditions</a>
+                <a href="#">Corporate Responsibility</a>
+                <a href="#">Hilton Hotline</a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>
+
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("slide");
+  var y = document.getElementsByClassName("slideImgInfo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none"; 
+    y[i].style.display = "none"; 
+  }
+  x[slideIndex-1].style.display = "block";  
+  y[slideIndex-1].style.display = "block";  
+  
+}
+</script>

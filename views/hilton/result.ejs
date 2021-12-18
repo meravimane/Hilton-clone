@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* NAVBAR */
+        *{
+            font-family: Proxima Nova,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+            margin: 0;
+            border: 0;
+        }
+        .navMain{
+            height: 70px;
+            position: fixed;
+            width:100%;
+            z-index: 9999;
+        }
+        .navbar {
+            position: fixed;
+            display: flex;
+            width:100%;
+            padding: 0.5% 2.6% 0.4%;
+            background:white;
+        }
+        .hiltonIcon{
+            flex-wrap: wrap;
+        }
+        .navLinks{
+            flex-grow: 6;
+            padding: 12px 16px;
+        }
+        .navLinks a{
+            margin-right: 1.5%;
+            text-decoration: none;
+            color: #121212;
+            font-weight: 700;
+            
+        }
+        .join{
+            flex-grow: 1;
+            display: flex;
+            padding: 12px 16px;
+        }
+        .join a{
+            text-decoration: none;
+            color: #121212;
+        }
+        .line{
+            width: 0.5%;
+            height: 90%;
+            background-color: rgb(227, 227, 227);
+            margin-left: 8%;
+            margin-right:8%;
+        }
+        #circularBox{
+           width: 18px;
+           height: 18px;
+           margin-left: 3%;
+        }
+        .borderBottom{
+            margin-top: 68px;
+            width: 100%;
+            height: 0.6px;
+            background-color: rgb(227, 227, 227);
+        }
+
+        /* navbar */
+         /* footer */
+         .footer{
+            display: grid;
+            grid-template-columns: 65% 35%;
+            width: 90%;
+            margin: auto;
+            margin-top:2%;
+            margin-bottom:3%
+        }
+        
+        .contactDetails h3{
+           color: #121212;
+        }
+        .contactDetails h2{
+           margin-top:2%;
+           color: #104C97;
+        }
+        .contactDetails p{
+           color: #666666;
+        }
+        .socialIcons{
+            display: flex;
+           margin-top: 3%;
+        }
+        .socialIcons img{
+           height: 32px;
+           width: 32px;
+           margin-right: 2%;
+        }
+        .usefulLinks{
+            display: grid;
+            grid-template-columns: 40% 60%;
+        }
+        .usefulLinks a{
+            display: block;
+            font-size: .800rem;
+            line-height: 2.5rem;
+        }
+        .usefulLinks a{
+            color: #104C97
+        }
+        .hrFooter{
+            margin-top:2%;
+        }
+        /* footer */
+
+
+        /* FILTER */
+        .filterDiv{
+            padding: 2%;
+            padding-top:90px;
+            width: 94%;
+            margin: auto;
+        }
+        .chooseFilter{
+            display: flex;
+            margin-top: 2%;
+            margin-left: 1.6%;
+        }
+        .chooseFilter h4{
+            margin-bottom: 5%;
+            font-size: 20px;
+            color: #104C97;
+        }
+        .inputDate{
+            margin:auto;
+            border: 1px solid #104C97;
+            text-align:center;
+            width:34%;
+            padding: 6px 6px 6px 6px;
+            color: #104C97;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+        .roomFilter{
+            display: flex;
+        }
+        .roomFilter label{
+            margin-top: 5%;
+            font-size: 18px;
+            color: #121212;
+            font-weight: 600;
+        }
+        [type="checkbox"]{
+            vertical-align:middle;
+        }
+        .roomFilter input{
+           width: 26px;
+           height: 26px;
+        }
+        .roomFilter div{
+            margin-right:12px;
+        }
+
+        .distanceFilter{
+            display: flex;
+            margin-left: 58%;
+        }
+        .distanceFilter label{
+            margin-top: 4.4%;
+        }
+        .distanceFilter select{
+            border: 1px solid #666666;
+            margin-left: 6px;
+            margin-right: 9px;
+            height: 44px;
+        }
+        .distanceFilter h3{
+            border: 1px solid #104C97;
+            width : 56px;
+            padding: 7px;
+            height: 28px;
+        }
+        .hrLine{
+            height:4px;
+            background-color: #104C97;
+            margin-top:2%;
+        }
+
+        /* Search Result */
+        .searchResultMain{
+            width: 94%;
+            margin: auto;
+        }
+        .webBtn {
+           font-size: 20px;
+           background-color: #104C97;
+           color: #fff;
+           padding:6px 28px;
+           border-radius: 5px;
+           text-decoration: none;
+           padding-top: 2%;
+        }
+       
+        .leftDiv{
+            width:45%;
+        }
+        .eachHotel{
+            height:110px;
+            display: grid;
+            grid-template-columns: 28% 44% 28%;
+        }
+
+        #hotelImg img{
+            width: 100%;
+        }
+
+        #hotelName{
+            margin-left: 8px;
+        }
+        #hotelName p{
+            margin-top: 8px;
+        }
+        #hotelRate h3{
+            margin-left: 76px;
+        }
+
+        #hotelRate p{
+            margin-top: 5px;
+            margin-bottom: 9px;
+        }
+
+        #hotelRate a{
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<!-- NAVBAR -->
+<div class="navMain">
+    <div class="navbar">
+        <div class="hiltonIcon">
+            <img src="/icons/hiltonIcon.svg" alt="Hilton">
+        </div>
+
+        <div class="navLinks">
+            <!-- <a href="#">Locations</a>
+            <a href="#">Offers</a>
+            <a href="#">Mettings & Events</a>
+            <a href="#">Credit Cards</a> -->
+        </div>
+
+        <div class="join">
+            <a href="#">Join</a>
+            <div class="line"></div>
+            <a href="#">Sign In</a>
+            <div id="circularBox">
+                <img src="/icons/user.svg" alt="">
+            </div>
+            
+        </div>
+    </div>
+    <hr class="borderBottom">
+</div>
+
+
+<!-- Filters -->
+<div class="filterDiv">
+    <div class="inputDate">
+        <p id="inputDateScript">Edit Stay Details: Mumbai - India, 22 Dec - 23 Dec</p>
+    </div>
+    <div class="chooseFilter"> 
+        <div>
+            <div>
+                <h4 id="resultCount">Showing 1 - 20 of 24 hotels</h4>
+            </div>
+            <div class="roomFilter">
+                <div >
+                    <input type="checkbox" value="Connecting Rooms">
+                    <label for="">Connecting Room</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="Use Points">
+                    <label for="">Use Points</label>
+                </div>
+            </div>
+        </div>
+        <div class="distanceFilter"> 
+            <label for="distance">Sort by</label>
+            <select name="distance" id="" >
+                <option value="Distance">Distance</option>
+                <option value="PointsHighLow">Points: High-Low</option>
+                <option value="PointsLowHigh">Points: Low-High</option>
+                <option value="PriceHighLow">Price: High-Low</option>
+                <option value="PriceLowHigh">Price: Low-High</option>
+            </select>
+            <h3>Filters</h3>
+        </div>
+    </div>
+    <div class="hrLine">
+
+    </div>
+</div>
+
+<!-- Search Result -->
+
+<div class="searchResultMain">
+    <div class="leftDiv">
+        <% hotels.forEach(hotel => { %>
+        <div >
+           <form class="eachHotel" action="/hotels/selectedHotel/<%= hotel._id%>" method="get">
+
+                <div id="hotelImg">
+                    
+                    <img src="https://imghtlak.mmtcdn.com/images/hotels/201504111535574226/1.jpg" alt="<%= hotel.property_name%>">
+                </div>
+                <div id="hotelName">
+                    <h3><%= hotel.property_name%></h3>
+                    <p><%= hotel.hotel_star_rating.split(" ")[0]%> Star</p>
+                    <h4>Hotel Details></h4>
+                </div>
+                <div id="hotelRate">
+                    <h3>₹ <%= hotel.property_id.substring(0, 5)%></h3>
+                    <p>HONORS DISCOUNT</p>
+                    <input class="webBtn" type="submit" Value="Book Now">
+                    <!-- <a class="webBtn" href="#">Book Now</a> -->
+                </div>
+
+
+           </form>
+
+               
+            
+        </div>
+        <% })  %>
+    </div>
+    <div class="rightDiv">
+
+    </div>
+</div>
+<!-- FOOTER -->
+
+<hr class="borderBottom hrFooter">
+<!-- footer -->
+    <div class="footer">
+        <div class="contactDetails">
+            <h3>How can we help?</h3>
+            <h2>1-800-HILTONS</h2>
+            <p>Call us, it's toll-free.</p>
+            <div class="socialIcons">
+                <img src="/icons/Facebook.svg" alt="Facebook">
+                <img src="/icons/Twitter.svg" alt="Twitter">
+                <img src="/icons/Instagram.svg" alt="Instagram">
+            </div>
+            
+        </div>
+        <div class="usefulLinks">
+            <div>
+                <a href="#">Travel Inspiration</a>
+                <a href="#">Pet-Friendly Stays</a>
+                <a href="#">Hilton Gift Card</a>
+                <a href="#">Global Privacy Statement</a>
+                <a href="#">Site Map</a>
+                <a href="#">Careers</a>
+                <a href="#">Development</a>
+                <a href="#">Media</a>
+                <a href="#">Web Accessibility</a>
+            </div>
+            <div>
+                <a href="#">Customer Support</a>
+                <a href="#">Cookies Statement</a>
+                <a href="#">Site Usage Agreement</a>
+                <a href="#">Personal Data Requests</a>
+                <a href="#">Do Not Sell My Personal Information</a>
+                <a href="#">Modern Slavery and Human Trafficking</a>
+                <a href="#">Hilton Honors Discount Terms & Conditions</a>
+                <a href="#">Corporate Responsibility</a>
+                <a href="#">Hilton Hotline</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    
+    
+</body>
+</html>
